@@ -1,0 +1,42 @@
+{% import '_macros.html' as macros -%}
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns#">
+<meta charset="UTF-8">
+<title>{% block title %}タイトル{% endblock %}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+<meta name="keywords" content="{% block keywords %}キーワード（カンマ区切り）{% endblock %}">
+<meta name="description" content="{% block description %}{% endblock %}">
+{% if app.debug %}
+<meta name="robots" content="noindex,nofollow,noarchive">
+{% endif %}
+{{ macros.show_meta_security_token(app.session.id) }}
+<link rel="stylesheet" href="{{ asset('/css/styles.css') }}">
+</head>
+<body>
+
+{% block content_body %}
+{% endblock %}
+
+<div id="toast-message" style="display:none"><p></p></div>
+{#<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>#}
+<script>window.jQuery || document.write('<script src="{{ asset('/js/vendor/jquery.js') }}"><\/script>')</script>
+{% if messages is defined and messages %}
+<script>
+(function() {
+  var messages = [];
+{% for message in messages %}
+  messages.push('{{ message|raw|e('js') }}');
+{% endfor %}
+  if (messages.length > 0) {
+    $('#toast-message p').html(messages.join('<br>'));
+    $('#toast-message').fadeIn().delay(4000).fadeOut();
+  }
+})();
+</script>
+{% endif %}
+{% block footer_script %}
+{% endblock %}
+</body>
+</html>

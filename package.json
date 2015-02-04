@@ -1,0 +1,22 @@
+{
+  "name": "madowaku",
+  "version": "0.0.0",
+  "description": "Tempalte project for PHP web applications",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/10mado/madowaku.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "bower": "^1.3.5",
+    "gulp": "^3.8.1",
+    "gulp-compass": "^1.1.9",
+    "gulp-jshint": "^1.6.3",
+    "gulp-shell": "^0.2.7",
+    "gulp-uglify": "^0.3.1"
+  }
+}

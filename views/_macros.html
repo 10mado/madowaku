@@ -1,0 +1,11 @@
+{% macro show_input_hidden_security_token(session_id) -%}
+{% if security_token_name is defined %}
+<input type="hidden" name="{{ security_token_name }}" value="{{ session_id }}">
+{% endif %}
+{%- endmacro %}
+
+{% macro show_meta_security_token(session_id) -%}
+{% if security_token_name is defined %}
+<meta name="{{ security_token_name }}" content="{{ session_id }}">
+{% endif %}
+{%- endmacro %}
