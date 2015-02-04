@@ -1,6 +1,7 @@
 {
   "name": "madowaku",
   "version": "0.0.0",
+  "private": true,
   "description": "Tempalte project for PHP web applications",
   "main": "index.js",
   "scripts": {
