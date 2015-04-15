@@ -39,10 +39,9 @@ $app->error(function (\Exception $e, $code) use ($app) {
 
 $app->before(function () use ($app) {
     App\Silex\Filter::preExecute($app);
+    $app['csrf_token']->generate();
     $app['twig']->addGlobal('messages', $app['messages']->all());
     $app['twig']->addGlobal('errors', []);
-    $app['twig']->addGlobal('security_token_name',
-            Silexcane\Silex\Service\SecurityTokenValidator::SECURITY_TOKEN_ITEM_NAME);
 });
 
 $router = new App\Silex\Router($app);

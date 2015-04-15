@@ -1,11 +1,4 @@
-{% macro show_input_hidden_security_token(session_id) -%}
-{% if security_token_name is defined %}
-<input type="hidden" name="{{ security_token_name }}" value="{{ session_id }}">
-{% endif %}
+{% macro input_hidden_csrf_token() -%}
+<input type="hidden" name="{{ constant('App\\Service\\CsrfToken::CSRF_TOKEN_NAME') }}" value="{{ app.session.get(constant('App\\Service\\CsrfToken::CSRF_TOKEN_NAME')) }}">
 {%- endmacro %}
 
-{% macro show_meta_security_token(session_id) -%}
-{% if security_token_name is defined %}
-<meta name="{{ security_token_name }}" content="{{ session_id }}">
-{% endif %}
-{%- endmacro %}

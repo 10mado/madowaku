@@ -45,8 +45,8 @@ $app['messages'] = $app->share(function () use ($app) {
    return new Silexcane\Silex\Service\Messages($app);
 });
 
-$app['security_token_validator'] = $app->share(function () use ($app) {
-    return new Silexcane\Silex\Service\SecurityTokenValidator($app);
+$app['csrf_token'] = $app->share(function () use ($app) {
+    return new Silexcane\Silex\Service\CsrfToken($app);
 });
 
 return $app;
