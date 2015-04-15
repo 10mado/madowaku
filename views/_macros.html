@@ -1,4 +1,4 @@
 {% macro input_hidden_csrf_token() -%}
-<input type="hidden" name="{{ constant('App\\Service\\CsrfToken::CSRF_TOKEN_NAME') }}" value="{{ app.session.get(constant('App\\Service\\CsrfToken::CSRF_TOKEN_NAME')) }}">
+<input type="hidden" name="{{ constant('Silexcane\\Silex\\Service\\CsrfToken::CSRF_TOKEN_NAME') }}" value="{{ app.session.get(constant('Silexcane\\Silex\\Service\\CsrfToken::CSRF_TOKEN_NAME')) }}">
 {%- endmacro %}
 
