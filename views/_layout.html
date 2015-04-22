@@ -11,7 +11,7 @@
 {% if app.debug %}
 <meta name="robots" content="noindex,nofollow,noarchive">
 {% endif %}
-{{ macros.show_meta_security_token(app.session.id) }}
+{{ macros.meta_csrf_token() }}
 <link rel="stylesheet" href="{{ asset('/css/styles.css') }}">
 </head>
 <body>

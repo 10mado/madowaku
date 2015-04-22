@@ -2,3 +2,7 @@
 <input type="hidden" name="{{ constant('Silexcane\\Silex\\Service\\CsrfToken::CSRF_TOKEN_NAME') }}" value="{{ app.session.get(constant('Silexcane\\Silex\\Service\\CsrfToken::CSRF_TOKEN_NAME')) }}">
 {%- endmacro %}
 
+{% macro meta_csrf_token() -%}
+{# post or send as X-CSRF-TOKEN header #}
+<meta name="{{ constant('Silexcane\\Silex\\Service\\CsrfToken::CSRF_TOKEN_NAME') }}" content="{{ app.session.get(constant('Silexcane\\Silex\\Service\\CsrfToken::CSRF_TOKEN_NAME')) }}">
+{%- endmacro %}
