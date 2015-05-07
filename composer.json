@@ -1,4 +1,15 @@
 {
+   "name": "10mado/madowaku",
+   "type": "project",
+   "description": "Template project using 10mado/silexcane",
+   "homepage": "https://github.com/10mado/madowaku",
+   "license": "BSD-3-Clause",
+   "authors": [
+    {
+      "name": "Hiroyuki Yamaoka",
+      "email": "yamaoka@10mado.jp"
+    }
+  ],
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
@@ -7,7 +18,7 @@
     "silex/silex": "~1.2",
     "twig/twig": ">=1.8,<2.0@dev",
     "twig/extensions": "~1.1",
-    "monolog/monolog": ">=1.0.0",
+    "monolog/monolog": "~1.0",
     "10mado/silexcane": "~1.0"
   },
   "require-dev": {
