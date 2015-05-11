@@ -6,3 +6,16 @@
 {# post or send as X-CSRF-TOKEN header #}
 <meta name="{{ constant('Silexcane\\Silex\\Service\\CsrfToken::CSRF_TOKEN_NAME') }}" content="{{ app.session.get(constant('Silexcane\\Silex\\Service\\CsrfToken::CSRF_TOKEN_NAME')) }}">
 {%- endmacro %}
+
+{% macro breadcrumbs(links) -%}
+<ol class="breadcrumb">
+  <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{ app.path('top') }}" itemprop="url"><span itemprop="title">Home</span></a>
+{% for link_href, link_caption in links %}
+{% if loop.last == true %}
+  <li class="active">{{ link_caption }}</li>
+{% else %}
+  <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{ link_href }}" itemprop="url"><span itemprop="title">{{ link_caption }}</span></a></li>
+{% endif %}
+{% endfor %}
+</ol>
+{%- endmacro %}
