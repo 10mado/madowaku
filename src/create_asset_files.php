@@ -14,6 +14,8 @@ $staticFileHashes = array_merge($staticFileHashes, listFileHashes($cssDir));
 //$staticFileHashes = array_merge($staticFileHashes, listFileHashes($cssVDir));
 //$staticFileHashes = array_merge($staticFileHashes, listFileHashes($imgDir));
 
+ksort($staticFileHashes);
+
 $publicDirPath = realpath(__DIR__ . '/../public');
 $contents = "<?php\nreturn [\n";
 foreach ($staticFileHashes as $realPath => $hash) {
@@ -35,6 +37,9 @@ function listFileHashes($dir)
                 continue;
             }
             $list[$fileInfo->getRealPath()] = md5_file($fileInfo->getRealPath());
+        } elseif (!$fileInfo->isDot() && $fileInfo->isDir()) {
+            $subList = listFileHashes($fileInfo->getRealPath());
+            $list = array_merge($list, $subList);
         }
     }
     return $list;
