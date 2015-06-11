@@ -10,12 +10,12 @@ var gulp = require('gulp')
 var paths = {
   sass: ['assets/sass/**/*.scss','assets/sass/**/*.sass'],
   js:   ['assets/js/*.js'],
-  bowerjs: [
-    'bower_components/jquery/dist/jquery.js',
+  vendorjs: [
+    'node_modules/jquery/dist/jquery.min.js'
   ],
-  bowercss: [
+  vendorcss: [
   ],
-  bowerfont: [
+  vendorfont: [
   ]
 }
 
@@ -49,19 +49,18 @@ gulp.task('js', function() {
     ]));
 });
 
-gulp.task('bower', function() {
-  gulp.src(paths.bowerjs)
-    .pipe(uglify({preserveComments: 'some'}))
+gulp.task('vendor', function() {
+  gulp.src(paths.vendorjs, {base: 'node_modules'})
     .pipe(gulp.dest('public/js/vendor'))
     .pipe(shell([
       'php src/create_asset_files.php'
     ]));
-  gulp.src(paths.bowercss)
+  gulp.src(paths.vendorcss, {base: 'node_modules'})
     .pipe(gulp.dest('public/css/vendor'))
     .pipe(shell([
       'php src/create_asset_files.php'
     ]));
-  gulp.src(paths.bowerfont)
+  gulp.src(paths.vendorfont, {base: 'node_modules'})
     .pipe(gulp.dest('public/css/vendor/font'));
 });
 
