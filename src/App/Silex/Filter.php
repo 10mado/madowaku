@@ -5,7 +5,7 @@ class Filter
 {
     public static function preExecute(Application $app)
     {
-/*
+        /*
         if ($app['session']->has('user_id')) {
             $userId = $app['session']->get('user_id');
             $user = $app['m.users']->findById($userId);
