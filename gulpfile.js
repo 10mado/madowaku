@@ -1,11 +1,12 @@
-"use strict";
+'use strict';
 
-var gulp = require('gulp')
-  , compass = require('gulp-compass')
-  , uglify = require('gulp-uglify')
-  , jshint = require('gulp-jshint')
-  , shell = require('gulp-shell')
-;
+var gulp = require('gulp'),
+    sass = require('gulp-sass'),
+    bourbon = require('node-bourbon').includePaths,
+    autoprefixer = require('gulp-autoprefixer'),
+    uglify = require('gulp-uglify'),
+    jshint = require('gulp-jshint'),
+    shell = require('gulp-shell');
 
 var paths = {
   sass: ['assets/sass/**/*.scss','assets/sass/**/*.sass'],
@@ -19,21 +20,23 @@ var paths = {
   ]
 }
 
-gulp.task('compass', function() {
+gulp.task('sass', function() {
   gulp.src(paths.sass)
-    .pipe(compass({
-      config_file: 'assets/config/compass.rb',
-      css: 'public/css',
-      sass: 'assets/sass',
-      bundle_exec: true
+    .pipe(sass({
+      outputStyle: 'compressed',
+      includePaths: ['sass'].concat(bourbon)
     }))
     .on('error', function(err) {
       return console.log(err.stack);
     })
-    .pipe(shell([
-      'php src/create_asset_files.php'
-    ]))
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false,
+      remove: false
+    }))
+    .pipe(gulp.dest('public/css'));
 });
+
 
 gulp.task('js', function() {
   gulp.src(paths.js)
@@ -69,9 +72,9 @@ gulp.task('server', shell.task([
 ]));
 
 gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['compass']);
+  gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.js, ['js']);
 });
 
-gulp.task('default', ['compass', 'js', 'watch']);
+gulp.task('default', ['sass', 'js', 'watch']);
 gulp.task('dev', ['default', 'server']);
