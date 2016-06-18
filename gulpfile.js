@@ -68,7 +68,7 @@ gulp.task('vendor', function() {
 });
 
 gulp.task('server', shell.task([
-  'php -c public/.user.ini -S lvh.me:8080 -t public'
+  'php -c public/.user.ini -S lvh.me:8088 -t public'
 ]));
 
 gulp.task('watch', function() {

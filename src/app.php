@@ -37,10 +37,10 @@ $app->error(function (\Exception $e, $code) use ($app) {
     }
 });
 
-$app->before(function () use ($app) {
+$app->before(function (Symfony\Component\HttpFoundation\Request $req) use ($app) {
     App\Silex\Filter::preExecute($app);
     $app['csrf_token']->generate();
-    if (!$app['request']->isMethodSafe() && !$app['csrf_token']->verify()) {
+    if (!$req->isMethodSafe() && !$app['csrf_token']->verify()) {
         // GET/HEAD 以外はcsrf-tokenチェック
         if (isset($app['session.test']) && !$app['session.test']) {
             $app->abort(404);
