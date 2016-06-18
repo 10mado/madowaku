@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7a591bcaf87ca8f26842cd144d8ef925",
-    "content-hash": "f1fd2a28c254e98b16d7f72330713328",
+    "hash": "7dd994ee2cc554c6608b0f215348ca85",
+    "content-hash": "ed2b44b57f3225499b3a7faab2e3d692",
     "packages": [
         {
             "name": "10mado/silexcane",
-            "version": "dev-master",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/10mado/silexcane.git",
-                "reference": "7845f054895d474959adbfd05df8ce38dd337e1f"
+                "reference": "35d5e96d07dd00d85811fd57c3decaa1505f617c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/10mado/silexcane/zipball/7845f054895d474959adbfd05df8ce38dd337e1f",
-                "reference": "7845f054895d474959adbfd05df8ce38dd337e1f",
+                "url": "https://api.github.com/repos/10mado/silexcane/zipball/35d5e96d07dd00d85811fd57c3decaa1505f617c",
+                "reference": "35d5e96d07dd00d85811fd57c3decaa1505f617c",
                 "shasum": ""
             },
             "require": {
@@ -52,7 +52,7 @@
             "keywords": [
                 "silex"
             ],
-            "time": "2016-06-18 03:20:42"
+            "time": "2016-06-18 04:51:57"
         },
         {
             "name": "monolog/monolog",
@@ -2427,9 +2427,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "10mado/silexcane": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
